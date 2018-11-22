@@ -27,8 +27,49 @@
 
 ;;; Code:
 
+;;;###autoload
+(define-minor-mode keyword-plist-mode
+  "Change how keyword alists are intended.
+This is most useful in libraries that define themes,
+where
+
+  (foobar ((t (:foreground \"red\"
+               :background \"blue\"))))
+
+looks much better than
+
+  (foobar ((t (:foreground \"red\"
+                           :background \"blue\"))))")
+
+(defalias 'keyword-plist--looking-at
+  (symbol-function 'looking-at))
+
+(define-advice calculate-lisp-indent
+    (:around (fn &optional parse-start) keyword-plist)
+  "Change how keyword alists are intended.
+This is most useful in libraries that define themes,
+where
+
+  (foobar ((t (:foreground \"red\"
+               :background \"blue\"))))
+
+looks much better than
+
+  (foobar ((t (:foreground \"red\"
+                           :background \"blue\"))))"
+  (if keyword-plist-mode
+      (cl-letf (((symbol-function 'looking-at)
+                 (lambda (regexp)
+                   (keyword-plist--looking-at
+                    (if (equal regexp "\\s(")
+                        "\\(?:\\s(\\|:\\)"
+                      regexp)))))
+        (funcall fn parse-start))
+    (funcall fn parse-start)))
+
 (provide 'kludges)
 ;; Local Variables:
+;; eval: (keyword-plist-mode)
 ;; indent-tabs-mode: nil
 ;; End:
 ;;; kludges.el ends here
