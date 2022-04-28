@@ -1,24 +1,27 @@
-;;; kludges.el --- Assorted Elisp snippets        -*- lexical-binding: t -*-
+;;; kludges.el --- Assorted Elisp snippets  -*- lexical-binding:t -*-
 
-;; Copyright (C) 2018  Jonas Bernoulli
+;; Copyright (C) 2018-2022 Jonas Bernoulli
 
 ;; Author: Jonas Bernoulli <jonas@bernoul.li>
 ;; Homepage: https://github.com/tarsius/kludges
+;; Keywords: local
 
-;; This file is not part of GNU Emacs.
+;; Package-Requires: ((emacs "28.1"))
 
-;; This file is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation; either version 3, or (at your option)
-;; any later version.
+;; SPDX-License-Identifier: GPL-3.0-or-later
 
+;; This file is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published
+;; by the Free Software Foundation, either version 3 of the License,
+;; or (at your option) any later version.
+;;
 ;; This file is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
-
-;; For a full copy of the GNU General Public License
-;; see <http://www.gnu.org/licenses/>.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 ;;; Commentary:
 
@@ -67,6 +70,7 @@ looks much better than
         (funcall fn parse-start))
     (funcall fn parse-start)))
 
+;;; _
 (provide 'kludges)
 ;; Local Variables:
 ;; eval: (keyword-plist-mode)
