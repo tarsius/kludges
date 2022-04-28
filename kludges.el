@@ -30,6 +30,8 @@
 
 ;;; Code:
 
+(require 'cl-lib)
+
 ;;;###autoload
 (define-minor-mode keyword-plist-mode
   "Change how keyword alists are intended.
