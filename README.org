@@ -1,0 +1,2 @@
+Assorted Elisp snippets intended for my own use.
+Things may appear and disappear at any time.
